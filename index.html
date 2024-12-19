@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iCloudOnline</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9fafc;
+            color: #000000;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #ffffff;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .navbar-brand img {
+            height: 220px; /* Tamaño del logo */
+            width: auto;
+        }
+
+        .navbar-nav .nav-link {
+            color: #4a4a4a;
+            margin-left: 20px;
+            transition: color 0.3s ease;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #000000;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 57vh; /* Altura de la sección */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+            url('./fotos/hero.laptop.jpeg') no-repeat center center/cover;
+            background-size: cover;
+            color: #fff; /* Color del texto */
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero img {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #ffffff;
+        }
+
+        .hero a {
+            margin-top: 20px;
+            display: inline-block;
+            font-size: 1.2rem;
+            color: #fff;
+            background-color: #014c97;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 7.3s;
+        }
+
+        .hero a:hover {
+            background-color: #0056b3;
+            transform: scale(1.05); /* Efecto de escala al pasar el ratón */
+        }
+
+        /* Services Section */
+        #services {
+            padding: 150px 20px;
+            background-color: #f0f4f8;
+        }
+
+        .service-card {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .service-card-body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .service-card h5 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            color: #000000;
+        }
+
+        /* Kontakt Section */
+        #contact {
+            background-color: rgba(0, 37, 76, 0.06);
+            color: #000000;
+            padding: 60px 20px;
+            border-top: 3px solid #ffffff;
+        }
+
+        #contact .form-control {
+            border-radius: 5px;
+        }
+
+        #contact .form-label {
+            font-weight: bold;
+        }
+
+        /* Über Uns Section */
+        #about {
+            padding-top: 150px;
+            padding-bottom: 150px;
+            background: linear-gradient(rgba(32, 58, 92, 0.7), rgba(0, 0, 0, 0.7)),
+            url('./fotos/5169.jpg') no-repeat center center/cover;
+            background-size: cover;
+        }
+
+        #about .text-white {
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #022950;
+            color: #fff;
+            text-align: center;
+            padding: 30px 20px; /* Aumenta el padding para hacerlo más espacioso */
+            border-top: 3px solid #0b0b0b; /* Un borde superior sutil para separar la sección */
+        }
+
+        .service-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Asegura que todas las tarjetas tengan la misma altura */
+            text-align: center;
+            padding: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card img {
+            width: 100%; /* Asegura que la imagen cubra todo el ancho del contenedor */
+            height: 200px; /* Establece una altura fija para todas las imágenes */
+            object-fit: cover; /* Ajusta la imagen para que se recorte y mantenga la proporción */
+            border-radius: 10px;
+        }
+
+        .service-card-body {
+            flex-grow: 1; /* Permite que el contenido ocupe el espacio restante */
+            padding-top: 15px;
+        }
+
+        .service-card h5 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .service-card ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 10px;
+        }
+
+        .service-card ul li {
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .service-card img {
+                height: 150px; /* Reduce la altura de las imágenes en pantallas más pequeñas */
+            }
+        }
+
+
+        @media (max-width: 768px) {
+            .service-card img {
+                height: 150px; /* Reduce la altura de las imágenes en pantallas más pequeñas */
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="./fotos/logo.png" alt="iCloudOnline Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#services">DIENSTE</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">ÜBER UNS</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">KONTAKT</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" style="padding-top: 300px; padding-bottom: 300px;">
+    <div class="hero-content">
+        <h1>Willkommen bei icloudonline</h1>
+        <p>Ihr Partner für professionelle IT-Dienstleistungen – maßgeschneiderte Lösungen, die funktionieren.</p>
+        <a href="#contact">Kontaktieren Sie uns</a>
+    </div>
+</section>
+
+<
+<section id="services" class="section">
+    <div class="container">
+        <h2 class="section-title text-center">Unsere Dienstleistungen</h2><br>
+        <div class="row g-4">
+            <!-- IT-Technik -->
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="./fotos/2147883608.jpg" alt="PC-Formatierung" class="img-fluid rounded">
+                    <div class="service-card-body">
+                        <h5>IT-Technik</h5>
+                        <p>Optimierung Ihrer IT-Infrastruktur für maximale Effizienz. Wir bieten maßgeschneiderte
+                            Lösungen für Unternehmen und Privatkunden, um Ihre Systeme zu modernisieren und auf dem
+                            neuesten Stand zu halten. Mit unserer Expertise stellen wir sicher, dass Ihre Hardware und
+                            Software optimal miteinander arbeiten und Sie langfristig von einer stabilen
+                            IT-Infrastruktur profitieren.</p><br>
+                        <ul>
+                            <li>Installation und Konfiguration von IT-Systemen</li>
+                            <li>Hardware- und Software-Upgrades</li>
+                            <li>Netzwerkintegration und -management</li>
+                            <li>PC-Formatierung auf Windows 11/Linux/MacOS</li>
+                        </ul>
+                        <br>
+                        <p>Wir bieten Ihnen nicht nur technische Lösungen, sondern auch eine langfristige Betreuung,
+                            damit Ihre IT immer effizient und sicher bleibt.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fehlerbehebung -->
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="./fotos/213.jpg" alt="Fehlerbehebung" class="img-fluid rounded">
+                    <div class="service-card-body">
+                        <h5>Fehlerbehebung</h5>
+                        <p>Durchsuchen und beheben Sie Software- und Hardware-Probleme, damit Ihr System wieder
+                            reibungslos läuft. Unsere Experten analysieren und reparieren Ihr System schnell und
+                            effizient, sodass Ausfallzeiten minimiert und die Produktivität maximiert wird. Vertrauen
+                            Sie auf unsere schnelle Reaktionszeit und unsere Expertise in der Fehlerdiagnose.</p>
+                        <br><br>
+                        <ul>
+                            <li>Diagnose von Systemfehlern</li>
+                            <li>Behebung von Software-Inkompatibilitäten</li>
+                            <li>Fehlerbehebung bei Hardwareproblemen</li>
+                            <li>Fehlerbehebung bei Netzwerkanomalien</li>
+                        </ul>
+                        <br>
+                        <p>Ganz gleich, ob Ihr Computer langsam geworden ist oder Ihr Netzwerk instabil läuft – wir
+                            finden die Ursache und bringen Ihr System schnell wieder auf Kurs.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IT-Support -->
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="./fotos/299_1758454607.jpg" alt="Optimierung" class="img-fluid rounded">
+                    <div class="service-card-body">
+                        <h5>IT-Support</h5>
+                        <p>Wir bieten umfassenden Support für alle IT-Angelegenheiten. Unsere Experten stehen Ihnen mit
+                            technischen Lösungen zur Seite, um Ihre Geräte und Systeme jederzeit optimal zu betreiben.
+                            Wir kümmern uns um alle Aspekte Ihrer IT, vom schnellen Problemlösungsservice bis zur
+                            langfristigen Wartung, damit Sie sich auf Ihr Kerngeschäft konzentrieren können.</p><br>
+                        <ul>
+                            <li>Fernwartung und technische Beratung</li>
+                            <li>Erfahrung mit Proxmox und Docker</li>
+                            <li>Windows Server Erfahrung</li>
+                            <li>Systemwartung und regelmäßige Updates</li>
+                            <li>Notfallunterstützung bei Systemausfällen</li>
+                        </ul>
+                        <br>
+                        <p>Unser Support-Team steht Ihnen jederzeit zur Verfügung, um technische Herausforderungen zu
+                            meistern, Ihre Systeme aktuell zu halten und Sie bei IT-Notfällen schnell zu
+                            unterstützen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Über Uns Section -->
+<section id="about" class="section">
+    <div class="container">
+        <h2 class="section-title text-white">Über uns</h2>
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <p class="text-white">
+                    Mit jahrelanger Erfahrung und einem tiefen Verständnis moderner Technologien stehen wir für
+                    Qualität,
+                    Effizienz und Zuverlässigkeit.
+                </p>
+                <p class="text-white">
+                    Unsere Mission ist es, unseren Kunden dabei zu helfen, ihre IT-Infrastruktur zu optimieren,
+                    Probleme schnell und effektiv zu lösen und die Leistungsfähigkeit ihrer Geräte zu maximieren.
+                </p>
+                <p class="text-white">
+                    Für technische Unterstützung in Ihrem Unternehmen oder für den privaten Gebrauch.
+                    <strong>icloudonline</strong> steht Ihnen jederzeit zur Seite. Wir bieten schnelle, effektive und
+                    kosteneffiziente Lösungen, damit Sie sich auf das konzentrieren können, was wirklich zählt –
+                    sowohl beruflich als auch privat.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <img src="./fotos/2149241211.jpg" alt="Über Uns Bild" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Contact Section -->
+<section id="contact" class="section">
+    <div class="container">
+        <h2 class="section-title text-center">Kontakt</h2>
+        <p class="text-center">Kontaktieren Sie uns, um mehr über unsere Dienstleistungen zu erfahren!</p>
+        <div class="row">
+            <div class="col-md-6">
+                <form action="#" method="POST">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Ihr Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-Mail</label>
+                        <input type="email" class="form-control" id="email" placeholder="Ihre E-Mail">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Nachricht</label>
+                        <textarea class="form-control" id="message" rows="4" placeholder="Ihre Nachricht"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-light">Absenden</button>
+                    <br>
+                </form>
+            </div>
+            <div class="col-md-6"><br><br>
+                <h5>Kontaktiere uns direkt</h5>
+                <ul class="list-unstyled">
+                    <li><i class="bi bi-telephone"></i> +49 123 456 789</li>
+                    <li><i class="bi bi-envelope"></i> info@icloudonline.ch</li>
+                    <li><i class="bi bi-geo-alt"></i> 3000 Bern</li>
+                    <li><i class="bi bi-geo-alt"></i> Schweiz</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 icloudonline | Alle Rechte vorbehalten.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
